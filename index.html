@@ -5,7 +5,7 @@
 <link rel="shortcut icon" type="image/png" href="/chat-mount/favicon.png">
 </head>
 
-<body>
+<body onpagehide="online()" onpageshow="offline()">
 <div id="myNav" class="overlay">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <div class="overlay-content">
@@ -29,7 +29,7 @@ function closeNav() {
 }
 </script>
 <p contenteditable="true" spellcheck="false" id="box" class="box" placeholder="send a message!">
-</p>
+</p><p id="status"></p>
 <br>
 	<pre id="log" style="height: 75%; width: 50%; background-color: #00000000; color: white; font-weight: bolder;"><a id="hlink"></a>
 	</pre>
@@ -198,5 +198,20 @@ var tit = document.getElementById("title");
   }
 
 </script>
+	<script>
+	var stat = document.getElementById("status");
+	function online() {
+	stat.style.color = "lime";
+	stat.innerHTML = "online/on this page";
+	}
+	function offline() {
+	stat.style.color = "red";
+	stat.innerHTML = "offline/went to another page";
+	}
+	document.getElementById("box").addEventListener("keydown", function() {
+	stat.style.color = "yellow";
+	stat.innerHTML = "typing...";
+	});
+	</script>
 	</body>
 </html>
