@@ -191,7 +191,7 @@ var tit = document.getElementById("title");
 	setTimeout(function() {tit.innerHTML = "Chatmount messaging";}, 1500);
 	if (ev.textContent.substring(0, 7) == 'https://') {
 	var link = document.getElementById("hlink");
-        link.innerHTML = 'https://' + link.innerHTML;
+        link.innerHTML = 'https://' + ev.textContent;
 	}
       }
       ev.preventDefault();
