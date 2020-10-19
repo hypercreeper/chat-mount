@@ -177,7 +177,8 @@ var tit = document.getElementById("title");
   <script>
   var b = Bugout("all");
   log("Hello world!");
-  b.on("seen", function(username) { log(username + " [ online ]"); });
+  b.on("seen", function(username) { log(username + " [ came ]"); });
+  b.on("seen", function(username) { log(username + " [ left ]"); });
   log(b.address() + " [ me ]");
   
   b.on("message", function(username, message) {
