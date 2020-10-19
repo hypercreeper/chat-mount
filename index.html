@@ -15,7 +15,7 @@ Here is how it works, to generate a room code click the button and you will get 
 </p>
   </div>
 </div>
-<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; help</span>
+<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9432; help</span>
 
 <script>
 function openNav() {
@@ -27,7 +27,7 @@ function closeNav() {
 }
 </script>
 <p contenteditable="true" spellcheck="false" id="box" class="box" placeholder="send a message!">
-</p><button onclick="genroomcode()">generate room code</button><p id="disp-room-code"></p><input type="search" id="enter-room-code" placeholder="enter room code here" onkeyup="loadroomcode()">
+</p>
 <br>
 	<pre id="log" style="height: 75%; width: 50%; background-image: url('https://www.bluebay.com/globalassets/media/green-mountains.jpg');">
 	</pre>
@@ -39,7 +39,7 @@ function closeNav() {
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: rgb(0,0,0);
+  background-color: rgb(255,0,0);
   background-color: rgba(0,0,0, 0.9);
   overflow-x: hidden;
   transition: 0.5s;
@@ -166,38 +166,14 @@ height: auto;
 }
 </style>
 <script>
-var rand = "";
-var drc = document.getElementById("disp-room-code");
-var erc = document.getElementById("enter-room-code");
     function log(message) {
       document.getElementById("log").textContent += message + "\n";
-    }
-    function genroomcode() {
-    rand = Math.round(Math.random() * 1000);
-    drc.innerHTML = rand;
-    }
-    function loadroomcode() {
-    var b = "";
-  if(erc.value != "") {
-  b = Bugout(erc.value);
-  console.log("erc.value");
-  }
-  else {
-  b = Bugout("all");
-  console.log("all");
-  }
     }
   </script>
   <script src="https://chr15m.github.io/bugout/bugout.min.js" type="application/javascript"></script>
   <script>
+  var b = Bugout("all");
   log("Hello world!");
-  var b = "";
-  if(erc.value != "") {
-  b = Bugout(erc.value);
-  }
-  else {
-  b = Bugout("all");
-  }
   b.on("seen", function(username) { log(username + " [ online ]"); });
   log(b.address() + " [ me ]");
   
