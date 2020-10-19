@@ -29,7 +29,7 @@ function closeNav() {
 <p contenteditable="true" spellcheck="false" id="box" class="box" placeholder="send a message!">
 </p>
 <br>
-	<pre id="log" style="height: 75%; width: 50%; background-color: #00000000; color: white; font-weight: bolder;">
+	<pre id="log" style="height: 75%; width: 50%; background-color: #00000000; color: white; font-weight: bolder;"><a id="hlink"></a>
 	</pre>
 <style>
 .overlay {
@@ -189,6 +189,10 @@ var tit = document.getElementById("title");
         ev.target.textContent = "";
 	tit.innerHTML = "new message";
 	setTimeout(function() {tit.innerHTML = "Chatmount messaging";}, 1500);
+	if (ev.textContent.substring(0, 7) == 'https://') {
+	var link = document.getElementById("hlink");
+        link.innerHTML = 'https://' + link.innerHTML;
+	}
       }
       ev.preventDefault();
     }
