@@ -179,9 +179,9 @@ var tit = document.getElementById("title");
   log(b.address() + " [ me ]");
   
   b.on("message", function(username, message) {
-    log(username + ": " + message);
     tit.innerHTML = "new message";
     setTimeout(function() {tit.innerHTML = "Chatmount messaging";}, 1500);
+    log(username + ": " + message);
   });
 
   document.getElementById("box").onkeydown = function(ev) {
