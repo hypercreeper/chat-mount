@@ -1,5 +1,6 @@
 <html>
 <head>
+	<audio id="ping" src="/chat-mount/ping.mp3"></audio>
 <title id="title">Chatmount messaging</title>
 <link rel="shortcut icon" type="image/png" href="/chat-mount/favicon.png">
 </head>
@@ -181,6 +182,7 @@ var tit = document.getElementById("title");
   b.on("message", function(username, message) {
     tit.innerHTML = "new message";
     setTimeout(function() {tit.innerHTML = "Chatmount messaging";}, 1500);
+    document.getElementById("ping").play();
     log(username + ": " + message);
   });
 
