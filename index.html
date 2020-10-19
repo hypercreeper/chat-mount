@@ -180,6 +180,8 @@ var tit = document.getElementById("title");
   
   b.on("message", function(username, message) {
     log(username + ": " + message);
+    tit.innerHTML = "new message";
+    setTimeout(function() {tit.innerHTML = "Chatmount messaging";}, 1500);
   });
 
   document.getElementById("box").onkeydown = function(ev) {
@@ -187,12 +189,6 @@ var tit = document.getElementById("title");
       if (b.lastwirecount) {
         b.send(ev.target.textContent);
         ev.target.textContent = "";
-	tit.innerHTML = "new message";
-	setTimeout(function() {tit.innerHTML = "Chatmount messaging";}, 1500);
-	if (ev.textContent.substring(0, 7) == 'https://') {
-	var link = document.getElementById("hlink");
-        link.innerHTML = 'https://' + ev.textContent;
-	}
       }
       ev.preventDefault();
     }
