@@ -1,0 +1,220 @@
+<html>
+<head>
+<title>Chatmount messaging</title>
+<link rel="shortcut icon" type="image/png" href="/messages/favicon.png">
+</head>
+<body>
+<div id="myNav" class="overlay">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <div class="overlay-content">
+  <h1 style="text-content: center; color: white;">Help</h1><br>
+  <p style="color: white;">To send a message you must have 2 devices open at the same website and wait until the other person's address shows up and says online next to it. 
+  </p>
+  <p style="color: white;">The 'Generate room code' and 'enter room code' are still unavailable but will come soon. <br>
+Here is how it works, to generate a room code click the button and you will get a 3 digit number. Everyone who wants to chat in that room must enter the room code and click <code>Enter</code> or <code>Return</code> on your keyboard to submit the code and join. <br>If you want to put a custom name for your room just type in the 'Enter room code' box and click <code>Enter</code> or <code>Return</code> on your keyboard and other participants have to do the same. <br> <p style="color: white; font-size: 24px;"><b>Note: </b>make sure when joining a room only 2 participants must join at the same time or a little bit late but not too much. Other participants can join at anytime. </p>
+</p>
+  </div>
+</div>
+<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; help</span>
+
+<script>
+function openNav() {
+  document.getElementById("myNav").style.width = "100%";
+}
+
+function closeNav() {
+  document.getElementById("myNav").style.width = "0%";
+}
+</script>
+<p contenteditable="true" spellcheck="false" id="box" class="box" placeholder="send a message!">
+</p><button onclick="genroomcode()">generate room code</button><p id="disp-room-code"></p><input type="search" id="enter-room-code" placeholder="enter room code here" onkeyup="loadroomcode()">
+<br>
+	<pre id="log" style="height: 75%; width: 50%; background-image: url('https://www.bluebay.com/globalassets/media/green-mountains.jpg');">
+	</pre>
+<style>
+.overlay {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0, 0.9);
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.overlay-content {
+  position: relative;
+  top: 25%;
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+  color: #f1f1f1;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+  font-size: 40px;
+  top: 15px;
+  right: 35px;
+  }
+}
+</style>
+<style>
+body {
+outline: none;
+font-family: sans-serif;
+background-image: url("https://www.bluebay.com/globalassets/media/green-mountains.jpg");
+background-size: 1366px;
+}
+input[type=search]:hover {
+background-color: lightgray;	
+}
+
+input[type=button]:hover {
+background-color: lightgray;	
+}
+input[type=search] {
+border-radius: 30px;
+border-style: solid;
+border-width: 1px;
+border-color: #55ff55;
+background-color: white;
+height: 50px;
+width: 300px;
+font-size: 24px;
+}
+input[type=button] {
+border-radius: 30px;
+border-style: solid;
+border-width: 1px;
+border-color: #55ff55;
+background-color: white;
+height: 50px;
+width: auto;
+font-size: 24px;
+}
+button {
+border-radius: 30px;
+border-style: solid;
+border-width: 1px;
+border-color: #55ff55;
+background-color: white;
+height: 50px;
+width: auto;
+font-size: 24px;
+}
+button:hover {
+background-color: lightgray;	
+}
+.deletes {
+background-color: #00000000;
+color: #00000000;
+border-color: #00000000;
+border-style: solid;
+outline-color: #f0f0f0;
+}
+.box:hover {
+background-color: lightgray;
+	}
+.box {
+font-size: 24px;
+border-radius: 30px;
+border-style: solid;
+border-width: 1px;
+border-color: #55ff55;
+background-color: white;
+height: 50px;
+width: 300px;
+}
+#speech-bubble {
+	width: 50%;
+	position: relative;
+	background: #e4e4e4;
+	border-radius: .4em;
+}
+
+#log {
+border-radius: 5px;
+border-color: gray;
+border-width: 2px;
+background-color: lightgray;
+width: 50%;
+height: auto;
+}
+</style>
+<script>
+var rand = "";
+var drc = document.getElementById("disp-room-code");
+var erc = document.getElementById("enter-room-code");
+    function log(message) {
+      document.getElementById("log").textContent += message + "\n";
+    }
+    function genroomcode() {
+    rand = Math.round(Math.random() * 1000);
+    drc.innerHTML = rand;
+    }
+    function loadroomcode() {
+    var b = "";
+  if(erc.value != "") {
+  b = Bugout(erc.value);
+  console.log("erc.value");
+  }
+  else {
+  b = Bugout("all");
+  console.log("all");
+  }
+    }
+  </script>
+  <script src="https://chr15m.github.io/bugout/bugout.min.js" type="application/javascript"></script>
+  <script>
+  log("Hello world!");
+  var b = "";
+  if(erc.value != "") {
+  b = Bugout(erc.value);
+  }
+  else {
+  b = Bugout("all");
+  }
+  b.on("seen", function(username) { log(username + " [ online ]"); });
+  log(b.address() + " [ me ]");
+  
+  b.on("message", function(username, message) {
+    log(username + ": " + message);
+  });
+
+  document.getElementById("box").onkeydown = function(ev) {
+    if (ev.keyCode == 13) {
+      if (b.lastwirecount) {
+        b.send(ev.target.textContent);
+        ev.target.textContent = "";
+      }
+      ev.preventDefault();
+    }
+  }
+
+</script>
+	</body>
+</html>
