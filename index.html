@@ -29,9 +29,9 @@ function closeNav() {
 }
 </script>
 <p contenteditable="true" spellcheck="false" id="box" class="box" placeholder="send a message!">
-</p><p id="status"></p>
+</p><input type="search" placeholder="enter username here" id="username">
 <br>
-	<pre id="log" style="height: 75%; width: 50%; background-color: #00000000; color: white; font-weight: bolder;"><a id="hlink"></a>
+	<pre id="log" style="height: 75%; width: 50%; background-color: #00000000; color: white; font-weight: bolder;">
 	</pre>
 <style>
 .overlay {
@@ -169,6 +169,8 @@ height: auto;
 </style>
 <script>
 var tit = document.getElementById("title");
+var user = document.getElementById("username");
+var input = "";
     function log(message) {
       document.getElementById("log").textContent += message + "\n";
     }
@@ -185,7 +187,7 @@ var tit = document.getElementById("title");
     tit.innerHTML = "new message";
     setTimeout(function() {tit.innerHTML = "Chatmount messaging";}, 1500);
     document.getElementById("ping").play();
-    log(username + ": " + message);
+    log(input + ": " + message);
   });
 
   document.getElementById("box").onkeydown = function(ev) {
@@ -193,6 +195,7 @@ var tit = document.getElementById("title");
       if (b.lastwirecount) {
         b.send(ev.target.textContent);
         ev.target.textContent = "";
+	input = user.value;
       }
       ev.preventDefault();
     }
