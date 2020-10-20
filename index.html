@@ -194,12 +194,10 @@ var userid = "";
     tit.innerHTML = "new message";
     setTimeout(function() {tit.innerHTML = "Chatmount messaging";}, 1500);
     document.getElementById("ping").play();
-    if ( document.hasFocus() ) {
-    //do nothing
-  } else {
-    var img = '/chat-mount/icon.png';
-    var text = message;
-    var notification = new Notification('New Message from ' + userid + ". ", { body: text, icon: img });
+    if(pagehide === "true");
+    	var img = '/chat-mount/icon.png';
+    	var text = message;
+    	var notification = new Notification('New Message from ' + userid + ". ", { body: text, icon: img });
   }
     log(userid + ": " + message);
     console.log(document.hasFocus());
@@ -262,7 +260,14 @@ function askNotificationPermission() {
       });
     }
   }
-}	
+}
+setInterval(checkpagehide, 100);
+function checkpagehide() {
+if ( document.hasFocus() ) {
+    pagehide = "false";
+  } else {
+    pagehide = "true";
+}
 	</script>
 	</body>
 </html>
