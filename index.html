@@ -197,6 +197,7 @@ var userid = "";
       if (b.lastwirecount) {
         b.send(ev.target.textContent);
         ev.target.textContent = "";
+	userid = message;
       }
       ev.preventDefault();
     }
