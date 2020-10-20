@@ -194,7 +194,7 @@ var userid = "";
     tit.innerHTML = "new message";
     setTimeout(function() {tit.innerHTML = "Chatmount messaging";}, 1500);
     document.getElementById("ping").play();
-    if(pagehide === "true");
+    if(pagehide === "true") {
     	var img = '/chat-mount/icon.png';
     	var text = message;
     	var notification = new Notification('New Message from ' + userid + ". ", { body: text, icon: img });
