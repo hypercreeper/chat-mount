@@ -200,6 +200,7 @@ var userid = "";
     var notification = new Notification('New Message from ' + userid + ". ", { body: text, icon: img });
 	  }
     log(userid + ": " + message);
+    console.log(pagehide);
 	});
 
   document.getElementById("box").onkeydown = function(ev) {
