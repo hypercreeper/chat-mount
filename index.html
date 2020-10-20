@@ -17,7 +17,9 @@ Here is how it works, to generate a room code click the button and you will get 
 	  </p><br><br><br><br><br><p style="color: white; font-size: 10px;"><b>Created by: </b>Mohamad Jawad Moukayed 8B</p>
   </div>
 </div>
-<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9432; help</span><br><br>
+<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9432; help</span>
+<br>
+<br>
 
 <script>
 function openNav() {
@@ -29,7 +31,7 @@ function closeNav() {
 }
 </script>
 <p contenteditable="true" spellcheck="false" id="box" class="box" placeholder="send a message!" style="float: left;">
-</p><input type="button" onclick="users.send(input);" value="send" id="send"><br><br><input type="search" placeholder="enter username here" id="username">
+</p><input type="button" onclick="users.send(input); b.send(document.getElementById('box').textContent);" value="send" id="send"><br><br><input type="search" placeholder="enter username here" id="username">
 <br>
 	<pre id="log" style="height: 75%; width: 50%; background-color: #00000000; color: white; font-weight: bolder;">
 	</pre>
