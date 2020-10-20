@@ -28,8 +28,8 @@ function closeNav() {
   document.getElementById("myNav").style.width = "0%";
 }
 </script>
-<p contenteditable="true" spellcheck="false" id="box" class="box" placeholder="send a message!">
-</p><input type="button" onclick="users.send(input);"><input type="search" placeholder="enter username here" id="username">
+<p contenteditable="true" spellcheck="false" id="box" class="box" placeholder="send a message!" style="float: left;">
+</p><input type="button" onclick="users.send(input);" value="send" id="send"><br><br><input type="search" placeholder="enter username here" id="username">
 <br>
 	<pre id="log" style="height: 75%; width: 50%; background-color: #00000000; color: white; font-weight: bolder;">
 	</pre>
@@ -197,7 +197,7 @@ var userid = "";
       if (b.lastwirecount) {
         b.send(ev.target.textContent);
         ev.target.textContent = "";
-	
+	document.getElementById("send").click();
       }
       ev.preventDefault();
     }
