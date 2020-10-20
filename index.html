@@ -188,7 +188,7 @@ var userid = "";
   var b = Bugout("all");
   var users = Bugout("users");
   log("Hello world!");
-  b.on("seen", function(username) { log(username + " [ came ]"); });
+  b.on("seen", function(username) { log(username + " [ joined ]"); });
   b.on("left", function(username) { log(username + " [ left ]"); });
   log(b.address() + " [ me ]");
   
