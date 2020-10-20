@@ -171,6 +171,7 @@ height: auto;
 var tit = document.getElementById("title");
 var user = document.getElementById("username");
 var input = "";
+var userid = "";
     function log(message) {
       document.getElementById("log").textContent += message + "\n";
     }
@@ -178,6 +179,7 @@ var input = "";
   <script src="https://chr15m.github.io/bugout/bugout.min.js" type="application/javascript"></script>
   <script>
   var b = Bugout("all");
+  var users = Bugout("users");
   log("Hello world!");
   b.on("seen", function(username) { log(username + " [ came ]"); });
   b.on("left", function(username) { log(username + " [ left ]"); });
@@ -187,7 +189,7 @@ var input = "";
     tit.innerHTML = "new message";
     setTimeout(function() {tit.innerHTML = "Chatmount messaging";}, 1500);
     document.getElementById("ping").play();
-    log(input + ": " + message);
+    log(userid + ": " + message);
   });
 
   document.getElementById("box").onkeydown = function(ev) {
@@ -201,10 +203,14 @@ var input = "";
   }
 document.getElementById("username").onkeydown = function(ev) {
     if (ev.keyCode == 13) {
-	input = user.value
+	input = user.value;
+	    users.send(input);
       ev.preventDefault();
     }
   }
+users.on("message", function(username, message) {
+	userid = message;
+}
 </script>
 	</body>
 </html>
