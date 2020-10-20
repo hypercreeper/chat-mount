@@ -215,5 +215,46 @@ users.on("message", function(username, message) {
 	userid = message;
 });
 </script>
+	<script>
+Notification.requestPermission().then(function(result) {
+  console.log(result);
+});
+
+function askNotificationPermission() {
+  // function to actually ask the permissions
+  function handlePermission(permission) {
+    // Whatever the user answers, we make sure Chrome stores the information
+    if(!('permission' in Notification)) {
+      Notification.permission = permission;
+    }
+
+    // set the button to shown or hidden, depending on what the user answers
+    if(Notification.permission === 'denied' || Notification.permission === 'default') {
+      console.log("notifications permission has been denied (" + Notification.permission + ")");
+    } else {
+      console.log("notifications permission has been granted (" + Notification.permission + ")");
+    }
+  }
+
+  // Let's check if the browser supports notifications
+  if (!('Notification' in window)) {
+    console.log("This browser does not support notifications.");
+  } else {
+    if(checkNotificationPromise()) {
+      Notification.requestPermission()
+      .then((permission) => {
+        handlePermission(permission);
+      })
+    } else {
+      Notification.requestPermission(function(permission) {
+        handlePermission(permission);
+      });
+    }
+  }
+}	
+var img = '/chat-mount/icon.png';
+var text = document.getElementById("log").textContent;
+var notification = new Notification('New Message from ' + userid + ". ", { body: text, icon: img });
+	</script>
 	</body>
 </html>
