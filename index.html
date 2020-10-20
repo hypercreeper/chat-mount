@@ -3,10 +3,10 @@
 	<title id="title">Chatmount messaging</title>
 	<link rel="icon" href="/chat-mount/icon.png" type="image/png">
 	<script>
-	var pagehide = false;
+	var pagehide = "false";
 	</script>
 	</head>
-<body onpagehide="pagehide = true;" onpageshow="pagehide = false;">
+<body onpagehide="pagehide = 'true';" onpageshow="pagehide = 'false';">
 	<audio id="ping" src="/chat-mount/ping.mp3"></audio>
 <div id="myNav" class="overlay">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -195,7 +195,7 @@ var userid = "";
     setTimeout(function() {tit.innerHTML = "Chatmount messaging";}, 1500);
     document.getElementById("ping").play();
     log(userid + ": " + message);
-	  if(pagehide == true) {
+	  if(pagehide === 'true') {
     var img = '/chat-mount/icon.png';
     var text = message;
     var notification = new Notification('New Message from ' + userid + ". ", { body: text, icon: img });
