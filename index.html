@@ -2,8 +2,11 @@
 	<head>
 	<title id="title">Chatmount messaging</title>
 	<link rel="icon" href="/chat-mount/icon.png" type="image/png">
+	<script>
+	var pagehide = false;
+	</script>
 	</head>
-<body>
+<body onpagehide="pagehide = true;" onpageshow="pagehide = false;">
 	<audio id="ping" src="/chat-mount/ping.mp3"></audio>
 <div id="myNav" class="overlay">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -192,7 +195,11 @@ var userid = "";
     setTimeout(function() {tit.innerHTML = "Chatmount messaging";}, 1500);
     document.getElementById("ping").play();
     log(userid + ": " + message);
-  });
+	  if(pagehide = true) {
+    var img = '/chat-mount/icon.png';
+    var text = document.getElementById("log").textContent;
+    var notification = new Notification('New Message from ' + userid + ". ", { body: text, icon: img });
+	  }});
 
   document.getElementById("box").onkeydown = function(ev) {
     if (ev.keyCode == 13) {
@@ -252,9 +259,6 @@ function askNotificationPermission() {
     }
   }
 }	
-var img = '/chat-mount/icon.png';
-var text = document.getElementById("log").textContent;
-var notification = new Notification('New Message from ' + userid + ". ", { body: text, icon: img });
 	</script>
 	</body>
 </html>
