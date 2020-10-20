@@ -197,7 +197,7 @@ var userid = "";
     log(userid + ": " + message);
 	  if(pagehide = true) {
     var img = '/chat-mount/icon.png';
-    var text = document.getElementById("log").textContent;
+    var text = message;
     var notification = new Notification('New Message from ' + userid + ". ", { body: text, icon: img });
 	  }});
 
