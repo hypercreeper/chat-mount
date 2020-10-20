@@ -31,7 +31,7 @@ function closeNav() {
 }
 </script>
 <p contenteditable="true" spellcheck="false" id="box" class="box" placeholder="send a message!" style="float: left;" onmouseover="document.getElementById('send').click();" onkeyup="function(event) {if (event.keyCode == 13) {document.getElementById('send').click(); document.getElementById('send').click();}};">
-</p><input type="button" onclick="users.send(input); b.send(document.getElementById('box').textContent);" value="send" id="send"><br><br><input type="search" placeholder="enter username here" id="username">
+</p><input type="button" onclick="users.send(input);" value="send" id="send"><br><br><input type="search" placeholder="enter username here" id="username">
 <br>
 	<pre id="log" style="height: 75%; width: 50%; background-color: #00000000; color: white; font-weight: bolder;">
 	</pre>
