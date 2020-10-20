@@ -200,7 +200,12 @@ var input = "";
       ev.preventDefault();
     }
   }
-
+document.getElementById("username").onkeydown = function(ev) {
+    if (ev.keyCode == 13) {
+	input = user.value
+      ev.preventDefault();
+    }
+  }
 </script>
 	</body>
 </html>
