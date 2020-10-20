@@ -11,12 +11,13 @@
 <div id="myNav" class="overlay">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <div class="overlay-content">
-  <h1 style="text-content: center; color: white;">Help</h1><br>
+  <p style="text-content: center; color: white; font-size: 40px;">Help</p><br>
   <p style="color: white;">To send a message you must have 2 devices open at the same website and wait until the other person's address shows up and says online next to it. 
+  </p><br><h1 style="text-content: center; color: white;">setting a username</h1><br>
+  <p style="color: white;">To set a username all you have to do is type in the "enter your username here" box the username you want to put and hit enter to set it.
+   If you dont click enter your username wont be set and it will say " : message"
+  
   </p>
-  <p style="color: white;">The 'Generate room code' and 'enter room code' are still unavailable but will come soon. <br>
-Here is how it works, to generate a room code click the button and you will get a 3 digit number. Everyone who wants to chat in that room must enter the room code and click <code>Enter</code> or <code>Return</code> on your keyboard to submit the code and join. <br>If you want to put a custom name for your room just type in the 'Enter room code' box and click <code>Enter</code> or <code>Return</code> on your keyboard and other participants have to do the same. <br>
-<p style="color: white; font-size: 24px;"><b>Note: </b>make sure when joining a room only 2 participants must join at the same time or a little bit late but not too much. Other participants can join at anytime. </p>
 	  </p><br><br><br><br><br><p style="color: white; font-size: 10px;"><b>Created by: </b>Mohamad Jawad Moukayed 8B</p>
   </div>
 </div>
@@ -34,7 +35,7 @@ function closeNav() {
 }
 </script>
 <p contenteditable="true" spellcheck="false" id="box" class="box" placeholder="send a message!" onmouseover="document.getElementById('send').click();" onkeyup="document.getElementById('send').click();">
-</p><input type="button" onclick="users.send(input);" value="send" id="send" style="background-color: #00000000; border-color: #00000000"><br><br><input type="search" placeholder="enter username here" id="username" onclick="askNotificationPermission()">
+</p><input type="button" onclick="users.send(input);" value="send" id="send" style="background-color: #00000000; border-color: #00000000" color: #00000000><br><br><input type="search" placeholder="enter username here" id="username" onclick="askNotificationPermission()">
 <br>
 	<pre id="log" style="height: 75%; width: 50%; background-color: #00000000; color: white; font-weight: bolder;">
 	</pre>
