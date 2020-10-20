@@ -7,6 +7,7 @@
 	</script>
 	</head>
 <body onpagehide="pagehide = 'true';" onpageshow="pagehide = 'false';">
+	<button onclick="notif('test', 'test', 'chat-mount/icon.png');"
 	<audio id="ping" src="/chat-mount/ping.mp3"></audio>
 <div id="myNav" class="overlay">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -196,9 +197,7 @@ var userid = "";
     setTimeout(function() {tit.innerHTML = "Chatmount messaging";}, 1500);
     document.getElementById("ping").play();
     if(pagehide == "true") {
-    	var img = '/chat-mount/icon.png';
-    	var text = message;
-    	var notification = new Notification('New Message from ' + userid + ". ", { body: text, icon: img });
+    	notif('New message from ' + userid, message, "/chat-mount/icon.png");
   }
     log(userid + ": " + message);
     console.log(document.hasFocus());
@@ -269,6 +268,9 @@ if ( document.hasFocus() ) {
   } else {
     pagehide = "true";
 }
+}
+function notif(title, body, img) {
+    	var notification = new Notification(title, { body: body, icon: img });	
 }
 	</script>
 	</body>
