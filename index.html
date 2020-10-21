@@ -189,6 +189,7 @@ var tit = document.getElementById("title");
 var user = document.getElementById("username");
 var input = "";
 var userid = "";
+var date = new Date();
     function log(message) {
       document.getElementById("log").textContent += message + "\n";
     }
@@ -209,7 +210,7 @@ var userid = "";
     if(pagehide == "true") {
     	notif('New message from ' + userid, message, "/chat-mount/icon.png");
   }
-    log(userid + ": " + message);
+    log(userid + date.hour() + ":" + date.minute() + "; " + message);
     console.log(document.hasFocus());
 	});
 
