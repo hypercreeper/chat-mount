@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', event => {
   const peer = new Peer('receiver', {
-    host: 'localhost',
-    port: 9000,
+    host: 'https://hypercreeper.github.io/chat-mount',
+    port: 433,
     path: '/'
   })
 
