@@ -1,0 +1,287 @@
+<html>
+	<head>
+	<title id="title">Chatmount messaging</title>
+	<link rel="icon" href="/chat-mount/icon.png" type="image/png">
+	<script>
+	var pagehide = "false";
+	</script>
+	</head>
+<body onpagehide="pagehide = 'true';" onpageshow="pagehide = 'false';" style="outline: none;">
+	<audio id="ping" src="/chat-mount/ping.mp3"></audio>
+<div id="myNav" class="overlay">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <div class="overlay-content">
+  <button onclick="notif('test', 'test', 'chat-mount/icon.png');">test notifications</button>
+  <p style="text-content: center; color: white; font-size: 40px;">Help</p><br>
+  <p style="color: white;">To send a message you must have 2 devices open at the same website and wait until the other person's address shows up and says online next to it. 
+  </p><br><h1 style="text-content: center; color: white;">setting a username</h1><br>
+  <p style="color: white;">To set a username all you have to do is type in the "enter your username here" box the username you want to put and hit enter to set it.
+   <br>If you dont click enter your username wont be set and it will say " : message"
+  
+  </p><br><h1 style="text-content: center; color: white;">clearing the chat</h1><br>
+  <p style="color: white;">To clear the chat you have to reload the page to clear but make sure to see "<address> [joined]". <br>
+if you are 3 people chatting and you see 4 addresses joined that means that 3 people and "the handler for external devices" has joined. <br>
+"the handler for external devices" is very important as it is allowing you to join and chat. Without it you are unaible to connect to each other cross OS. MacOS X chromeos
+chromeOS - ChromeOS maybe     chromeOS X android/IOS. That is why you need the handler
+  
+  </p>
+	  </p><br><br><br><br><br><p style="color: white; font-size: 10px;"><b>Created by: </b>Mohamad Jawad Moukayed 8B</p>
+  </div>
+</div>
+<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9432; help</span>
+<br>
+<br>
+
+<script>
+function openNav() {
+  document.getElementById("myNav").style.width = "100%";
+}
+
+function closeNav() {
+  document.getElementById("myNav").style.width = "0%";
+}
+</script>
+<p contenteditable="true" spellcheck="false" id="box" class="box" placeholder="send a message!" onmousemove="document.getElementById('send').click();" onmouseover="document.getElementById('send').click();" onkeyup="document.getElementById('send').click();">
+</p><input type="button" onclick="users.send(input);" value="send" id="send" style="background-color: #00000000; border-color: #00000000; color: #00000000;"><br><br><input type="search" placeholder="enter username here" id="username" onclick="askNotificationPermission()">
+<br>
+	<pre id="log" style="height: 75%; width: 50%; background-color: #00000000; color: white; font-weight: bolder;">
+	</pre>
+<style>
+.overlay {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgb(255,0,0);
+  background-color: rgba(0,0,0, 0.9);
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.overlay-content {
+  position: relative;
+  top: 25%;
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+  color: #f1f1f1;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+  font-size: 40px;
+  top: 15px;
+  right: 35px;
+  }
+}
+</style>
+<style>
+body {
+outline: none;
+font-family: sans-serif;
+background-image: url("https://www.bluebay.com/globalassets/media/green-mountains.jpg");
+background-size: 1366px;
+}
+input[type=search]:hover {
+background-color: lightgray;	
+}
+
+input[type=button]:hover {
+background-color: lightgray;	
+}
+input[type=search] {
+border-radius: 30px;
+border-style: solid;
+border-width: 1px;
+border-color: #55ff55;
+background-color: white;
+height: auto;
+width: 300px;
+font-size: 24px;
+outline: none;
+}
+input[type=button] {
+border-radius: 30px;
+border-style: solid;
+border-width: 1px;
+border-color: #55ff55;
+background-color: white;
+height: 50px;
+width: auto;
+font-size: 24px;
+outline: none;
+}
+button {
+border-radius: 30px;
+border-style: solid;
+border-width: 1px;
+border-color: #55ff55;
+background-color: white;
+height: 50px;
+width: auto;
+font-size: 24px;
+outline: none;
+}
+button:hover {
+background-color: lightgray;	
+}
+.deletes {
+background-color: #00000000;
+color: #00000000;
+border-color: #00000000;
+border-style: solid;
+outline-color: #f0f0f0;
+}
+.box:hover {
+background-color: lightgray;
+	}
+.box {
+font-size: 24px;
+border-radius: 30px;
+border-style: solid;
+border-width: 1px;
+border-color: #55ff55;
+background-color: white;
+height: auto;
+width: 300px;
+outline: none;
+}
+#speech-bubble {
+	width: 50%;
+	position: relative;
+	background: #e4e4e4;
+	border-radius: .4em;
+}
+
+#log {
+border-radius: 5px;
+border-color: gray;
+border-width: 2px;
+background-color: lightgray;
+width: 50%;
+height: auto;
+}
+</style>
+<script>
+var tit = document.getElementById("title");
+var user = document.getElementById("username");
+var input = "";
+var userid = "";
+    function log(message) {
+      document.getElementById("log").textContent += message + "\n";
+    }
+  </script>
+  <script src="https://chr15m.github.io/bugout/bugout.min.js" type="application/javascript"></script>
+  <script>
+  var b = Bugout("serv5");
+  var users = Bugout("users");
+  log("Hello world!");
+  b.on("seen", function(username) { log(username + " [ joined ]"); });
+  b.on("left", function(username) { log(username + " [ left ]"); });
+  log(b.address() + " [ me ]");
+  
+  b.on("message", function(username, message) {
+    tit.innerHTML = "new message from" + userid;
+    setTimeout(function() {tit.innerHTML = "Chatmount messaging";}, 1500);
+    document.getElementById("ping").play();
+    if(pagehide == "true") {
+    	notif('New message from ' + userid, message, "/chat-mount/icon.png");
+  }
+    log(userid + ": " + message);
+    console.log(document.hasFocus());
+	});
+
+  document.getElementById("box").onkeydown = function(ev) {
+    if (ev.keyCode == 13) {
+      if (b.lastwirecount) {
+        b.send(ev.target.textContent);
+        ev.target.textContent = "";
+	document.getElementById("send").click();
+      }
+      ev.preventDefault();
+    }
+  }
+document.getElementById("username").onkeydown = function(ev) {
+    if (ev.keyCode == 13) {
+	input = user.value;
+	    users.send(input);
+      ev.preventDefault();
+    }
+  }
+users.on("message", function(username, message) {
+	userid = message;
+});
+</script>
+	<script>
+Notification.requestPermission().then(function(result) {
+  console.log(result);
+});
+
+function askNotificationPermission() {
+  // function to actually ask the permissions
+  function handlePermission(permission) {
+    // Whatever the user answers, we make sure Chrome stores the information
+    if(!('permission' in Notification)) {
+      Notification.permission = permission;
+    }
+
+    // set the button to shown or hidden, depending on what the user answers
+    if(Notification.permission === 'denied' || Notification.permission === 'default') {
+      console.log("notifications permission has been denied (" + Notification.permission + ")");
+    } else {
+      console.log("notifications permission has been granted (" + Notification.permission + ")");
+    }
+  }
+
+  // Let's check if the browser supports notifications
+  if (!('Notification' in window)) {
+    console.log("This browser does not support notifications.");
+  } else {
+    if(checkNotificationPromise()) {
+      Notification.requestPermission()
+      .then((permission) => {
+        handlePermission(permission);
+      })
+    } else {
+      Notification.requestPermission(function(permission) {
+        handlePermission(permission);
+      });
+    }
+  }
+}
+setInterval(checkpagehide, 100);
+function checkpagehide() {
+if ( document.hasFocus() ) {
+    pagehide = "false";
+  } else {
+    pagehide = "true";
+}
+}
+function notif(title, body, img) {
+    	var notification = new Notification(title, { body: body, icon: img });	
+}
+	</script>
+	</body>
+</html>
