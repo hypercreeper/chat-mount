@@ -2,6 +2,8 @@
 	<head>
 	<title id="title">Chatmount messaging</title>
 	<link rel="icon" href="/chat-mount/icon.png" type="image/png">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/peerjs/0.3.16/peer.min.js"></script>
+	<script src="/chat-mount/receiver.js"></script>
 	<script>
 	var pagehide = "false";
 	</script>
@@ -39,7 +41,21 @@ function closeNav() {
 </p><input type="button" onclick="users.send(input);" value="send" id="send" style="background-color: #00000000; border-color: #00000000; color: #00000000;"><br><br><input type="search" placeholder="enter username here" id="username" onclick="askNotificationPermission()">
 <br>
 	<pre id="log" style="height: 75%; width: 50%; background-color: #00000000; color: white; font-weight: bolder;">
-	</pre>
+	</pre><iframe><html>
+
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/peerjs/0.3.16/peer.min.js"></script>
+  <script src="/chat-mount/sender.js"></script>
+</head>
+
+<body>
+  <form>
+    <input type="file" />
+  </form>
+</body>
+
+</html>
+	</iframe>
 <style>
 .overlay {
   height: 100%;
