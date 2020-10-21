@@ -203,7 +203,7 @@ var userid = "";
   log(b.address() + " [ me ]");
   
   b.on("message", function(username, message) {
-    tit.innerHTML = "new message";
+    tit.innerHTML = "new message from" + userid;
     setTimeout(function() {tit.innerHTML = "Chatmount messaging";}, 1500);
     document.getElementById("ping").play();
     if(pagehide == "true") {
