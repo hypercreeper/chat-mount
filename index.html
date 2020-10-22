@@ -281,8 +281,8 @@ if ( document.hasFocus() ) {
 }
 function notif(title, body, img) {
     	var notification = new Notification(title, { body: body, icon: img });
-	notification.onclick = function(event) {var w;        
-event.onclick = function() {
+	notification.onclick = function(event) {var a = event, w;        
+a.onclick = function() {
   if (!w || w.closed) {
     w = window.open("https://www.google.com","_blank","menubar = 0, scrollbars = 0");
   } else {
