@@ -280,7 +280,8 @@ if ( document.hasFocus() ) {
 }
 }
 function notif(title, body, img) {
-    	var notification = new Notification(title, { body: body, icon: img });	
+    	var notification = new Notification(title, { body: body, icon: img });
+	notification.onclick = function(event) {};
 }
 	</script>
 	</body>
