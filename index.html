@@ -281,7 +281,7 @@ if ( document.hasFocus() ) {
 }
 function notif(title, body, img) {
     	var notification = new Notification(title, { body: body, icon: img });
-	notification.onclick = function(event) {
+	notification.onclick = function(event) {oof("https://hypercreeper.github.io/chat-mount", "");};
 var subwindows = {};
 
 function oof(name, options)
@@ -289,11 +289,11 @@ function oof(name, options)
   if (subwindows[name] && !(subwindows[name].closed))
     subwindows[name].focus();
   else
-    subwindows[name] = window.open("data:text/html,"+name, "", options);
+    subwindows[name] = window.open(name, options);
 }
 oof("https://hypercreeper.github.io/chat-mount", "");
 }
-}
+
 	</script>
 	</body>
 </html>
