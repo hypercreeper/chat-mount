@@ -281,7 +281,15 @@ if ( document.hasFocus() ) {
 }
 function notif(title, body, img) {
     	var notification = new Notification(title, { body: body, icon: img });
-	notification.onclick = function(event) {window.open('https://hypercreeper.github.io/chat-mount', 'https://hypercreeper.github.io/chat-mount');};
+	notification.onclick = function(event) {var w;        
+event.onclick = function() {
+  if (!w || w.closed) {
+    w = window.open("https://www.google.com","_blank","menubar = 0, scrollbars = 0");
+  } else {
+    console.log('window is already opened');
+  }
+  w.focus();
+};};
 }
 	</script>
 	</body>
