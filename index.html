@@ -279,8 +279,9 @@ if ( document.hasFocus() ) {
     pagehide = "true";
 }
 }
+var notification = "";
 function notif(title, body, img) {
-    	var notification = new Notification(title, { body: body, icon: img });
+    	notification = new Notification(title, { body: body, icon: img });
 	}
 notification.onclick = function(event) {
 	event.preventDefault();
