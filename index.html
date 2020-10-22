@@ -281,11 +281,11 @@ if ( document.hasFocus() ) {
 }
 function notif(title, body, img) {
     	var notification = new Notification(title, { body: body, icon: img });
-	notification.onclick = function(event) {
+	}
+notification.onclick = function(event) {
 	event.preventDefault();
 	window.open('http://hypercreeper.github.io/chat-mount');
-	}
-
+}
 	</script>
 	</body>
 </html>
