@@ -282,8 +282,16 @@ if ( document.hasFocus() ) {
 function notif(title, body, img) {
     	var notification = new Notification(title, { body: body, icon: img });
 	notification.onclick = function(event) {
-    // prevent the browser from focusing the Notification's tab
-  window.focus('http://hypercreeper.github.io/chat-mount');
+var subwindows = {};
+
+function oof(name, options)
+{
+  if (subwindows[name] && !(subwindows[name].closed))
+    subwindows[name].focus();
+  else
+    subwindows[name] = window.open("data:text/html,"+name, "", options);
+}
+oof("https://hypercreeper.github.io/chat-mount", "");
 }
 }
 	</script>
