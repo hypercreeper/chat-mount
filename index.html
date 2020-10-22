@@ -280,12 +280,13 @@ if ( document.hasFocus() ) {
 }
 }
 var notification = "";
+var tab = 
 function notif(title, body, img) {
     	notification = new Notification(title, { body: body, icon: img });
 	}
 notification.onclick = function(event) {
 	event.preventDefault();
-	window.open('http://hypercreeper.github.io/chat-mount');
+	window.open("https://hypercreeper.github.io/chat-mount", "_blank")
 }
 	</script>
 	</body>
