@@ -280,9 +280,10 @@ if ( document.hasFocus() ) {
 }
 }
 var notification = "";
-var tab = 
+var mobileNotification = "";
 function notif(title, body, img) {
     	notification = new Notification(title, { body: body, icon: img });
+        mobileNotification = new webkitNotification(title, { body: body, icon: img });
 	}
 notification.onclick = function(event) {
 	event.preventDefault();
