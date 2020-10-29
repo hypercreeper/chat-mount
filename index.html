@@ -283,7 +283,17 @@ var notification = "";
 var mobileNotification = "";
 function notif(title, body, img) {
     	notification = new Notification(title, { body: body, icon: img });
-        mobileNotification = new webkitNotification(title, { body: body, icon: img });
+  Notification.requestPermission(function(result) {
+    if (result === 'granted') {
+      navigator.serviceWorker.ready.then(function(registration) {
+        registration.showNotification(title, {
+          body: body,
+          icon: img,
+          vibrate: [200, 100, 200, 100, 200, 100, 200]
+        });
+      });
+    }
+  });
 	}
 notification.onclick = function(event) {
 	event.preventDefault();
