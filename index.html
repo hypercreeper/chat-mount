@@ -283,8 +283,6 @@ var notification = "";
 var mobileNotification = "";
 function notif(title, body, img) {
     	notification = new Notification(title, { body: body, icon: img });
-  Notification.requestPermission(function(result) {
-    if (result === 'granted') {
       navigator.serviceWorker.ready.then(function(registration) {
         registration.showNotification(title, {
           body: body,
@@ -293,8 +291,6 @@ function notif(title, body, img) {
         });
       });
     }
-  });
-	}
 notification.onclick = function(event) {
 	event.preventDefault();
 	window.open("https://hypercreeper.github.io/chat-mount", "_blank");
