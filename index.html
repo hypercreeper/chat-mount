@@ -213,7 +213,6 @@ var dummyEl = document.getElementById('box');
 	staty.style.color = "lime";
 	statuss.send("online");
 	}
-	staty.innerHTML = stat
 	statuss.on("message", function(message) {staty.innerHTML = message;});
 	setInterval(setStatus, 100);
 	}
