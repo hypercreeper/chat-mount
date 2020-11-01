@@ -213,7 +213,7 @@ var dummyEl = document.getElementById('box');
 	staty.style.color = "lime";
 	statuss.send("online");
 	}
-	statuss.on("message", function(username, message) {staty.innerHTML = message;});
+	statuss.on("message", function(username, message) {staty.innerHTML = userid + ": " + message;});
 	}
   </script>
   <script>
