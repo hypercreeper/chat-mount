@@ -214,7 +214,7 @@ var dummyEl = document.getElementById('box');
 	statuss.send("online");
 	}
 	statuss.on("message", function(message) {staty.innerHTML = message;});
-	setInterval(setStatus, 100);
+	setInterval(setStatus, 1000);
 	}
 	setStatus();
   </script>
