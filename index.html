@@ -38,7 +38,7 @@ function closeNav() {
   document.getElementById("myNav").style.width = "0%";
 }
 </script>
-<p contenteditable="true" spellcheck="false" id="box" class="box" placeholder="send a message!" onmousemove="document.getElementById('send').click();" onmouseover="document.getElementById('send').click();" onkeyup="document.getElementById('send').click(); setStatus();" >
+<p contenteditable="true" spellcheck="false" id="box" class="box" placeholder="send a message!" onmousemove="document.getElementById('send').click();" onmouseover="document.getElementById('send').click();" onkeyup="document.getElementById('send').click(); setStatus('released');" >
 </p><input type="button" onclick="users.send(input);" value="send" id="send" style="background-color: #00000000; border-color: #00000000; color: #00000000;"><br><br><input type="search" placeholder="enter username here" id="username" onclick="askNotificationPermission()">
 	<br><p id="status"></p><br><br>
 	<pre id="log" style="height: 75%; width: 50%; background-color: #00000000; color: white; font-weight: bolder;">
@@ -195,25 +195,25 @@ var dummyEl = document.getElementById('box');
     function log(message) {
       document.getElementById("log").textContent += message + "\n";
     }
-	function setStatus() {
+	function setStatus(val) {
 	var staty = document.getElementById("status");
-	function setStatus() {
+	if(document.activeElement === dummyEl) {
 	staty.style.color = "yellow";	
 	statuss.send("typing");
-	}
-	if(document.activeElement != dummyEl) {
-	staty.style.color = "lime";
-	statuss.send("online");
 	}
 	if(document.hasFocus() == false) {
 	staty.style.color = "red";
 	statuss.send("offline");
 	}
-	if(document.hasFocus() == true) {
+	if(document.hasFocus() == true && val == "released") {
+	setTimeout(function() {
 	staty.style.color = "lime";
 	statuss.send("online");
+	}, 4000);
 	}
-	statuss.on("message", function(username, message) {staty.innerHTML = userid + ": " + message;});
+	statuss.on("message", function(username, message) {staty.innerHTML = userid + ": " + message;
+	console.log(userid + ": " + message);
+	});
 	}
   </script>
   <script>
