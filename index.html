@@ -2,9 +2,6 @@
 	<head>
 	<title id="title">Chatmount messaging</title>
 	<link rel="icon" href="/chat-mount/icon.png" type="image/png">
-	<script>
-	var pagehide = "false";
-	</script>
 	</head>
 <body onpagehide="setStatus('offline');" onpageshow="setStatus('online');" style="outline: none;">
 	<audio id="ping" src="/chat-mount/ping.mp3"></audio>
@@ -212,7 +209,7 @@ var dummyEl = document.getElementById('box');
 	staty.style.color = "red";
 	statuss.send("offline");
 	}
-	if(document.getElementById("box").hasFocus() == true) {
+	if(document.hasFocus() == true) {
 	staty.style.color = "lime";
 	statuss.send("online");
 	}
