@@ -197,7 +197,8 @@ var dummyEl = document.getElementById('box');
     }
 	function setStatus() {
 	var staty = document.getElementById("status");
-	document.getElementById("box").addEventListener("keydown", function() {
+	document.getElementById("box").addEventListener("keydown", "setStatus");
+	function setStatus() {
 	staty.style.color = "yellow";	
 	statuss.send("typing");
 	});
