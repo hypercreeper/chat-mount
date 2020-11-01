@@ -201,10 +201,12 @@ var dummyEl = document.getElementById('box');
 	staty.style.color = "yellow";	
 	statuss.send("typing");
 	}
-	if(document.hasFocus() == false) {
-	staty.style.color = "red";
+	document.addEventListener('visibilitychange', () => {
+  if (document.hidden) {
+    staty.style.color = "red";
 	statuss.send("offline");
-	}
+  }
+});
 	if(document.hasFocus() == true && val == "released") {
 	setTimeout(function() {
 	staty.style.color = "lime";
