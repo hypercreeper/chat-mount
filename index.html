@@ -197,10 +197,10 @@ var dummyEl = document.getElementById('box');
     }
 	function setStatus() {
 	var staty = document.getElementById("status");
-	if) {
+	document.getElementById("box").addEventListener("keydown", function() {
 	staty.style.color = "yellow";	
 	statuss.send("typing");
-	}
+	});
 	if(document.activeElement != dummyEl) {
 	staty.style.color = "lime";
 	statuss.send("online");
