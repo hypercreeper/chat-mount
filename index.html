@@ -187,7 +187,6 @@ var tit = document.getElementById("title");
 var user = document.getElementById("username");
 var input = "";
 var userid = "";
-var satt = "";
 var statuss = Bugout("status");
 // dummy element
 var dummyEl = document.getElementById('box');
@@ -198,7 +197,7 @@ var dummyEl = document.getElementById('box');
     }
 	function setStatus(val) {
 	var staty = document.getElementById("status");
-	if(document.activeElement === dummyEl && satt == "typing") {
+	if(document.activeElement === dummyEl) {
 	staty.style.color = "yellow";	
 	statuss.send("typing");
 	}
@@ -212,10 +211,8 @@ var dummyEl = document.getElementById('box');
 	statuss.send("online");
 	}, 4000);
 	}
-	statuss.on("message", function(username, message) {
-	staty.innerHTML = userid + ": " + message;
+	statuss.on("message", function(username, message) {staty.innerHTML = userid + ": " + message;
 	console.log(userid + ": " + message);
-	satt = message;
 	});
 	}
   </script>
