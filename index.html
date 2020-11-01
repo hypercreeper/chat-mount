@@ -191,6 +191,10 @@ var user = document.getElementById("username");
 var input = "";
 var userid = "";
 var statuss = Bugout("status");
+// dummy element
+var dummyEl = document.getElementById('box');
+
+// check for focus
     function log(message) {
       document.getElementById("log").textContent += message + "\n";
     }
@@ -200,17 +204,16 @@ var statuss = Bugout("status");
 	staty.style.color = "yellow";	
 	statuss.send("typing");
 	}
-	if(stat == "offline") {
+	if(document.activeElement != dummyEl) {
+	staty.style.color = "lime";
+	statuss.send("online");
+	}
+	if(document.hasFocus() == false) {
 	staty.style.color = "red";
 	statuss.send("offline");
 	}
-	if(stat == "online") {
-	staty.style.color = "lime";	
-	statuss.send("online");
-	}
-	if(document.getElementById("box").hasFocus() == false) {
+	if(document.getElementById("box").hasFocus() == true) {
 	staty.style.color = "lime";
-	staty.innerHTML = "online";
 	statuss.send("online");
 	}
 	staty.innerHTML = stat
