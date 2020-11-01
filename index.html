@@ -212,7 +212,15 @@ var dummyEl = document.getElementById('box');
 	}, 4000);
 	}
 	statuss.on("message", function(username, message) {staty.innerHTML = userid + ": " + message;
-	console.log(userid + ": " + message);
+	if(message == "typing") {
+	staty.style.color = "yellow";
+	}
+	if(message == "online") {
+	staty.style.color = "lime";
+	}
+	if(message == "offline") {
+	staty.style.color = "red";
+	}
 	});
 	}
   </script>
