@@ -189,6 +189,7 @@ var tit = document.getElementById("title");
 var user = document.getElementById("username");
 var input = "";
 var userid = "";
+var statuss = Bugout("status");
     function log(message) {
       document.getElementById("log").textContent += message + "\n";
     }
@@ -196,18 +197,23 @@ var userid = "";
 	var staty = document.getElementById("status");
 	if(stat == "typing") {
 	staty.style.color = "yellow";	
+	statuss.send("typing");
 	}
 	if(stat == "offline") {
-	staty.style.color = "red";	
+	staty.style.color = "red";
+	statuss.send("offline");
 	}
 	if(stat == "online") {
 	staty.style.color = "lime";	
+	statuss.send("online");
 	}
 	if(document.getElementById("box").hasFocus() == false) {
 	staty.style.color = "lime";
-	staty.innerHTML = "online"
+	staty.innerHTML = "online";
+	statuss.send("online");
 	}
 	staty.innerHTML = stat
+	statuss.on("message", function(message) {staty.innerHTML = message;});
 	}
   </script>
   <script src="https://chr15m.github.io/bugout/bugout.min.js" type="application/javascript"></script>
