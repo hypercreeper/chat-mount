@@ -39,7 +39,7 @@ function closeNav() {
 }
 </script>
 <div><p contenteditable="true" style="float: left;" spellcheck="false" id="box" class="box" placeholder="send a message!" onmousemove="document.getElementById('send').click();" onmouseover="document.getElementById('send').click();" onkeyup="document.getElementById('send').click(); setStatus('released');" >
-</p><img style="height: 50px; width: 50px;" src="https://hypercreeper.github.io/chat-mount/gif.gif" id="typinggif"></div><input type="button" onclick="users.send(input);" value="send" id="send" style="background-color: #00000000; border-color: #00000000; color: #00000000;"><br><br><input type="search" placeholder="enter username here" id="username" onclick="askNotificationPermission()">
+</p><div></div><img style="height: 50px; width: 50px;" src="https://hypercreeper.github.io/chat-mount/gif.gif" id="typinggif"></div><input type="button" onclick="users.send(input);" value="send" id="send" style="background-color: #00000000; border-color: #00000000; color: #00000000;"><br><br><input type="search" placeholder="enter username here" id="username" onclick="askNotificationPermission()">
 	<br><p id="status"></p><br><br>
 	<pre id="log" style="heigt: auto; width: 50%; background-color: #00000000; color: white; font-weight: bolder;">
 	</pre>
