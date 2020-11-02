@@ -42,7 +42,7 @@ function closeNav() {
 </p><input type="button" onclick="users.send(input);" value="send" id="send" style="background-color: #00000000; border-color: #00000000; color: #00000000;"><br><br><input type="search" placeholder="enter username here" id="username" onclick="askNotificationPermission()">
 	<br><p id="status"></p><br><br>
 	<pre id="log" style="height: 75%; width: 50%; background-color: #00000000; color: white; font-weight: bolder;">
-	</pre>
+	</pre><img src="https://cdn.dribbble.com/users/597268/screenshots/2991038/dribbble_2x.gif" id="typinggif">
 <style>
 .overlay {
   height: 100%;
@@ -216,12 +216,15 @@ var dummyEl = document.getElementById('box');
 	statuss.on("message", function(username, message) {staty.innerHTML = userid + ": " + message;
 	if(message == "typing") {
 	staty.style.color = "yellow";
+	document.getElementById("typinggif").hidden = false;
 	}
 	if(message == "online") {
 	staty.style.color = "lime";
+	document.getElementById("typinggif").hidden = true;
 	}
 	if(message == "offline") {
 	staty.style.color = "red";
+	document.getElementById("typinggif").hidden = true;
 	}
 	});
 	}
