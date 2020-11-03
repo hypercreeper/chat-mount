@@ -333,6 +333,25 @@ function notif(title, body, img) {
 notification.onclick = function(event) {
 	event.preventDefault();
 	window.open("https://hypercreeper.github.io/chat-mount", "_blank");
+	  var ajks = document.getElementById("log");
+  document.getElementById("box").onkeypress = function(event) {
+  if(event.keyCode == 13) {
+  if(document.getElementById("box").textContent == "/rainbow") {
+  ajks.style.color = "red";
+  setTimeout(function() {ajks.style.color = "orange";}, 500);
+  setTimeout(function() {ajks.style.color = "yellow";}, 1000);
+  setTimeout(function() {ajks.style.color = "lime";}, 1500);
+  setTimeout(function() {ajks.style.color = "green";}, 2000);
+  setTimeout(function() {ajks.style.color = "blue";}, 2500);
+  setTimeout(function() {ajks.style.color = "purple";}, 3000);
+  setTimeout(function() {ajks.style.color = "magenta";}, 3500);
+  setTimeout(function() {ajks.style.color = "pink";}, 4000);
+  setTimeout(function() {ajks.style.color = "white";}, 4500);
+  setTimeout(function() {ajks.style.color = "black";}, 5000);
+  console.log("/rainbow command executed");
+  }
+  }
+  }
 }
 	</script>
 	</body>
