@@ -52,9 +52,9 @@ function previewFile() {
   var preview = document.body.style
   var file    = document.querySelector('input[type=file]').files[0];
   var reader  = new FileReader();
-  var pix = "";
+  var pic = "";
   reader.onloadend = function () {
-    pic = "url('" + reader.result + "');";
+    pic = 'url("' + reader.result + '");';
     preview = pic;
   }
 
