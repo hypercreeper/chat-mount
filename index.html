@@ -40,12 +40,12 @@ chromeOS - ChromeOS maybe     chromeOS X android/IOS. That is why you need the h
     auth2.signOut().then(function () {
       console.log('User signed out.');
       document.getElementById("so").hidden = false;
-      document.getElementById("username").style = "position: fixed;";
+      document.getElementById("username").style = "";
       document.getElementById("profilepic").src = "";
     });
   }
 </script>
-  <input style="position: fixed;" type="search" placeholder="enter username here" id="username" onclick="askNotificationPermission()">
+  <input style="" type="search" placeholder="enter username here" id="username" onclick="askNotificationPermission()">
   </div>
   </div>
 <br>
@@ -369,6 +369,7 @@ var dummyEl = document.getElementById('box');
   }
 document.getElementById("username").onkeydown = function(ev) {
     if (ev.keyCode == 13) {
+	    console.log(loggedIn);
 	    if(loggedIn == true) {
 		    input = userid;
 	    }
