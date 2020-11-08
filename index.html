@@ -32,13 +32,14 @@ chromeOS - ChromeOS maybe     chromeOS X android/IOS. That is why you need the h
   <a href="javascript:void(0)" class="closebtn" onclick="closesettings()">&times;</a>
   <div class="overlay-content">
   <div class="g-signin2" data-onsuccess="onSignIn"></div>
-	  <a href="#" onclick="signOut();" id="so" hidden>Sign out</a>
+	  <a href="#" onclick="signOut();" id="so" hidden style="color: blue; font-size: 18px; text-align: right;">Sign out</a>
 <script>
   function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function () {
       console.log('User signed out.');
       document.getElementById("so").hidden = false;
+      document.getElementById("username").hidden = true;
     });
   }
 </script>
