@@ -1,7 +1,9 @@
 <html>
 	<head>
 	<title id="title">Chatmount messaging</title>
-	<link rel="icon" href="/chat-mount/icon.png" type="image/png">
+	<link rel="icon" href="/icon.png" type="image/png">
+ <meta name="google-signin-client_id" content="404916197013-8defo61htvnh2th4mmk6sjmvr1j0blb4.apps.googleusercontent.com">
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
 	</head>
 <body style="outline: none;">
 	<audio id="ping" src="/chat-mount/ping.mp3"></audio>
@@ -25,6 +27,78 @@ chromeOS - ChromeOS maybe     chromeOS X android/IOS. That is why you need the h
 	  </p><br><br><br><br><br><p style="color: white; font-size: 10px;"><b>Created by: </b>Mohamad Jawad Moukayed 8B</p>
   </div>
 </div>
+<span style="font-size:30px; cursor:pointer;" onclick="opensettings()">&#9881; settings</span>
+<div id="settingss" class="overlay">
+  <a href="javascript:void(0)" class="closebtn" onclick="closesettings()">&times;</a>
+  <div class="overlay-content">
+  <div class="g-signin2" data-onsuccess="onSignIn"></div>
+
+  </div>
+  </div>
+<br>
+<br>
+
+<script>
+function opensettings() {
+  document.getElementById("settingss").style.width = "100%";
+}
+
+function closesettings() {
+  document.getElementById("settingss").style.width = "0%";
+}
+</script>
+<style>
+.overlay {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgb(255,0,0);
+  background-color: rgba(255,255,0, 0.9);
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.overlay-content {
+  position: relative;
+  top: 25%;
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+  color: #f1f1f1;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+  font-size: 40px;
+  top: 15px;
+  right: 35px;
+  }
+}
+</style>
+
 <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9432; help</span>
 <br>
 <br>
@@ -188,6 +262,8 @@ var user = document.getElementById("username");
 var input = "";
 var userid = "";
 var statuss = Bugout("status");
+var profilep = Bugout("pp");
+var pp = "";
 // dummy element
 var dummyEl = document.getElementById('box');
 
@@ -350,5 +426,27 @@ notification.onclick = function(event) {
 	window.open("https://hypercreeper.github.io/chat-mount", "_blank");
 }
 	</script>
+	<script>
+function onSignIn(googleUser) {
+  var profile = googleUser.getBasicProfile();
+  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+  console.log('Name: ' + profile.getName());
+  console.log('Image URL: ' + profile.getImageUrl());
+  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+  userid = profile.getName();
+  profilep.send(profile.getImageUrl());
+}
+function createPP() {
+profilep.on("message", function(username, message) {
+pp = message;
+});
+var img = document.createElement("img");
+var brrr = document.createElement("br");
+img.src = pp;
+
+document.body.appendChild(img);
+document.body.appendChild(brrr);
+}
+</script>
 	</body>
 </html>
