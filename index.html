@@ -40,7 +40,7 @@ chromeOS - ChromeOS maybe     chromeOS X android/IOS. That is why you need the h
     auth2.signOut().then(function () {
       console.log('User signed out.');
       document.getElementById("so").hidden = false;
-      document.getElementById("username").hidden = false;
+      document.getElementById("username").style = "position: fixed;";
       document.getElementById("profilepic").src = "";
     });
   }
@@ -449,11 +449,11 @@ function onSignIn(googleUser) {
   console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
   userid = profile.getName();
   profilep.send(profile.getImageUrl());
-	document.getElementById("username").hidden = true;
 	document.getElementById("so").hidden = false;
 	document.getElementById("username").value = profile.getName();
 	users.send(userid);
 	document.getElementById("profilepic").src = profile.getImageUrl();
+	document.getElementById("username").style = "position: fixed; background-color: transparent; border-color: transparent; color: transparent";
 }
 function createPP() {
 profilep.on("message", function(username, message) {
