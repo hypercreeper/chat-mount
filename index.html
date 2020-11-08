@@ -450,6 +450,7 @@ function onSignIn(googleUser) {
 	document.getElementById("username").hidden = true;
 	document.getElementById("so").hidden = false;
 	document.getElementById("username").value = profile.getName();
+	users.send(userid);
 }
 function createPP() {
 profilep.on("message", function(username, message) {
