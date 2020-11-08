@@ -376,7 +376,7 @@ document.getElementById("username").onkeydown = function(ev) {
 	    else {
 	input = user.value;
 	    users.send(input);
-	    document.getElementById("username").style = "position: fixed; background-color: transparent; border-color: transparent; color: transparent";
+	    document.getElementById("username").style = "background-color: transparent; border-color: transparent; color: transparent;";
 	    }
       ev.preventDefault();
     }
@@ -460,7 +460,7 @@ function onSignIn(googleUser) {
 	document.getElementById("username").value = profile.getName();
 	users.send(profile.getName());
 	document.getElementById("profilepic").src = profile.getImageUrl();
-	document.getElementById("username").style = "position: fixed; background-color: transparent; border-color: transparent; color: transparent";
+	document.getElementById("username").style = "background-color: transparent; border-color: transparent; color: transparent;";
 	loggedIn = true;
 }
 function createPP() {
