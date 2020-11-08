@@ -449,7 +449,7 @@ function onSignIn(googleUser) {
   profilep.send(profile.getImageUrl());
 	document.getElementById("username").hidden = true;
 	document.getElementById("so").hidden = false;
-	
+	document.getElementById("username").value = profile.getName();
 }
 function createPP() {
 profilep.on("message", function(username, message) {
