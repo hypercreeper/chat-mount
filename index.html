@@ -46,6 +46,25 @@ chromeOS - ChromeOS maybe     chromeOS X android/IOS. That is why you need the h
   }
 </script>
   <input style="" type="search" placeholder="enter username here" id="username" onclick="askNotificationPermission()">
+	  <input type="file" id="file" onchange="previewFile()">
+	  <script>
+function previewFile() {
+  var preview = document.body.style
+  var file    = document.querySelector('input[type=file]').files[0];
+  var reader  = new FileReader();
+  var pix = "";
+  reader.onloadend = function () {
+    pic = "url('" + reader.result + "');";
+    preview = pic;
+  }
+
+  if (file) {
+    reader.readAsDataURL(file);
+  } else {
+    preview.src = "";
+  }
+}
+</script>
   </div>
   </div>
 <br>
