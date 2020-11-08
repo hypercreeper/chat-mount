@@ -6,6 +6,7 @@
   <script src="https://apis.google.com/js/platform.js" async defer></script>
 	</head>
 <body style="outline: none;">
+	<img src="" id="profilepic" style="left: 100%; border-radius: 50%; height: 32px; width: 32px;">
 	<audio id="ping" src="/chat-mount/ping.mp3"></audio>
 <div id="myNav" class="overlay">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -451,6 +452,7 @@ function onSignIn(googleUser) {
 	document.getElementById("so").hidden = false;
 	document.getElementById("username").value = profile.getName();
 	users.send(userid);
+	document.getElementById("profilepic").src = profile.getImageUrl();
 }
 function createPP() {
 profilep.on("message", function(username, message) {
