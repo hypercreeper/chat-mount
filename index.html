@@ -277,6 +277,7 @@ var userid = "";
 var statuss = Bugout("status");
 var profilep = Bugout("pp");
 var pp = "";
+var loggedIn = false;
 // dummy element
 var dummyEl = document.getElementById('box');
 
@@ -368,10 +369,14 @@ var dummyEl = document.getElementById('box');
   }
 document.getElementById("username").onkeydown = function(ev) {
     if (ev.keyCode == 13) {
+	    if(loggedIn == true) {
+		    input = userid;
+	    }
+	    else {
 	input = user.value;
 	    users.send(input);
 	    document.getElementById("username").style = "position: fixed; background-color: transparent; border-color: transparent; color: transparent";
-	    
+	    }
       ev.preventDefault();
     }
   }
@@ -452,9 +457,10 @@ function onSignIn(googleUser) {
   profilep.send(profile.getImageUrl());
 	document.getElementById("so").hidden = false;
 	document.getElementById("username").value = profile.getName();
-	users.send(userid);
+	users.send(profile.getName());
 	document.getElementById("profilepic").src = profile.getImageUrl();
 	document.getElementById("username").style = "position: fixed; background-color: transparent; border-color: transparent; color: transparent";
+	loggedIn = true;
 }
 function createPP() {
 profilep.on("message", function(username, message) {
