@@ -32,6 +32,16 @@ chromeOS - ChromeOS maybe     chromeOS X android/IOS. That is why you need the h
   <a href="javascript:void(0)" class="closebtn" onclick="closesettings()">&times;</a>
   <div class="overlay-content">
   <div class="g-signin2" data-onsuccess="onSignIn"></div>
+	  <a href="#" onclick="signOut();" id="so" hidden>Sign out</a>
+<script>
+  function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+      document.getElementById("so").hidden = false;
+    });
+  }
+</script>
   <input style="position: fixed;" type="search" placeholder="enter username here" id="username" onclick="askNotificationPermission()">
   </div>
   </div>
@@ -436,6 +446,8 @@ function onSignIn(googleUser) {
   userid = profile.getName();
   profilep.send(profile.getImageUrl());
 	document.getElementById("username").hidden = true;
+	document.getElementById("so").hidden = false;
+	
 }
 function createPP() {
 profilep.on("message", function(username, message) {
