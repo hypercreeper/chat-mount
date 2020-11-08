@@ -370,7 +370,8 @@ document.getElementById("username").onkeydown = function(ev) {
     if (ev.keyCode == 13) {
 	input = user.value;
 	    users.send(input);
-	    document.getElementById("username").hidden = true;
+	    document.getElementById("username").style = "position: fixed; background-color: transparent; border-color: transparent; color: transparent";
+	    
       ev.preventDefault();
     }
   }
