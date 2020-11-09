@@ -1,17 +1,17 @@
 <html>
 	<head>
 	<title id="title">Chatmount messaging</title>
-	<link rel="icon" href="/chat-mount/icon.png" type="image/png">
-	<script>
-	var pagehide = "false";
-	</script>
+	<link rel="icon" href="https://hypercreeper.github.io/chat-mount/icon.png" type="image/png">
+ <meta name="google-signin-client_id" content="404916197013-8defo61htvnh2th4mmk6sjmvr1j0blb4.apps.googleusercontent.com">
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
 	</head>
-<body onpagehide="pagehide = 'true';" onpageshow="pagehide = 'false';" style="outline: none;">
+<body style="outline: none;">
+	<img src="" id="profilepic" style="left: 1326px; border-radius: 50%; height: 32px; width: 32px; position: fixed;">
 	<audio id="ping" src="/chat-mount/ping.mp3"></audio>
 <div id="myNav" class="overlay">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <div class="overlay-content">
-  <button onclick="notif('test', 'test', 'chat-mount/icon.png');">test notifications</button>
+  <button onclick="notif('test', 'test', 'chat-mount/icon.png');">test notifications</button><button id="clearChat" onclick="clearChat()">clear chat</button>
   <p style="text-content: center; color: white; font-size: 40px;">Help</p><br>
   <p style="color: white;">To send a message you must have 2 devices open at the same website and wait until the other person's address shows up and says online next to it. 
   </p><br><h1 style="text-content: center; color: white;">setting a username</h1><br>
@@ -19,7 +19,7 @@
    <br>If you dont click enter your username wont be set and it will say " : message"
   
   </p><br><h1 style="text-content: center; color: white;">clearing the chat</h1><br>
-  <p style="color: white;">To clear the chat you have to reload the page to clear but make sure to see "<address> [joined]". <br>
+  <p style="color: white;">To clear the chat you have to reload the page to clear but make sure to see "person's address [joined]". <br>
 if you are 3 people chatting and you see 4 addresses joined that means that 3 people and "the handler for external devices" has joined. <br>
 "the handler for external devices" is very important as it is allowing you to join and chat. Without it you are unaible to connect to each other cross OS. MacOS X chromeos
 chromeOS - ChromeOS maybe     chromeOS X android/IOS. That is why you need the handler
@@ -28,6 +28,109 @@ chromeOS - ChromeOS maybe     chromeOS X android/IOS. That is why you need the h
 	  </p><br><br><br><br><br><p style="color: white; font-size: 10px;"><b>Created by: </b>Mohamad Jawad Moukayed 8B</p>
   </div>
 </div>
+<span style="font-size:30px; cursor:pointer;" onclick="opensettings()">&#9881; settings</span>
+<div id="settingss" class="overlay">
+  <a href="javascript:void(0)" class="closebtn" onclick="closesettings()">&times;</a>
+  <div class="overlay-content">
+  <div class="g-signin2" data-onsuccess="onSignIn"></div>
+	  <a href="#" onclick="signOut();" id="so" hidden style="color: blue; font-size: 18px; text-align: left;">Sign out</a>
+<script>
+  function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+      document.getElementById("so").hidden = false;
+      document.getElementById("username").style = "";
+      document.getElementById("profilepic").src = "";
+    });
+  }
+</script>
+  <input style="" type="search" placeholder="enter username here" id="username" onclick="askNotificationPermission()">
+	  <input type="file" id="file" onchange="previewFile()">
+	  <script>
+function previewFile() {
+  var preview = document.body.style
+  var file    = document.querySelector('input[type=file]').files[0];
+  var reader  = new FileReader();
+  var pic = "";
+  reader.onloadend = function () {
+    pic = 'url("' + reader.result + '");';
+    preview = pic;
+  }
+
+  if (file) {
+    reader.readAsDataURL(file);
+  } else {
+    preview.src = "";
+  }
+}
+</script>
+  </div>
+  </div>
+<br>
+<br>
+
+<script>
+function opensettings() {
+  document.getElementById("settingss").style.width = "100%";
+}
+
+function closesettings() {
+  document.getElementById("settingss").style.width = "0%";
+}
+</script>
+<style>
+.overlay {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgb(255,0,0);
+  background-color: rgba(255,255,0, 0.9);
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.overlay-content {
+  position: relative;
+  top: 25%;
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+  color: #f1f1f1;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+  font-size: 40px;
+  top: 15px;
+  right: 35px;
+  }
+}
+</style>
+
 <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9432; help</span>
 <br>
 <br>
@@ -41,10 +144,10 @@ function closeNav() {
   document.getElementById("myNav").style.width = "0%";
 }
 </script>
-<p contenteditable="true" spellcheck="false" id="box" class="box" placeholder="send a message!" onmousemove="document.getElementById('send').click();" onmouseover="document.getElementById('send').click();" onkeyup="document.getElementById('send').click();">
-</p><input type="button" onclick="users.send(input);" value="send" id="send" style="background-color: #00000000; border-color: #00000000; color: #00000000;"><br><br><input type="search" placeholder="enter username here" id="username" onclick="askNotificationPermission()">
-<br>
-	<pre id="log" style="height: 75%; width: 50%; background-color: #00000000; color: white; font-weight: bolder;">
+<p contenteditable="true" spellcheck="false" id="box" class="box" placeholder="send a message!" onmousemove="document.getElementById('send').click();" onmouseover="document.getElementById('send').click();" onkeyup="document.getElementById('send').click(); setStatus('released');" >
+</p><input type="button" onclick="users.send(input);" value="send" id="send" style="background-color: #00000000; border-color: #00000000; color: #00000000;"><br><br>
+	<br><p id="status"></p><br><br>
+	<pre id="log" style="heigt: auto; width: 50%; background-color: #00000000; color: white; font-weight: bolder;">
 	</pre>
 <style>
 .overlay {
@@ -184,26 +287,71 @@ width: 50%;
 height: auto;
 }
 </style>
+  <script src="https://chr15m.github.io/bugout/bugout.min.js" type="application/javascript"></script>
 <script>
 var tit = document.getElementById("title");
 var user = document.getElementById("username");
 var input = "";
 var userid = "";
+var statuss = Bugout("status3");
+var profilep = Bugout("pp3");
+var pp = "";
+var loggedIn = false;
+// dummy element
+var dummyEl = document.getElementById('box');
+
+// check for focus
     function log(message) {
       document.getElementById("log").textContent += message + "\n";
     }
+	function setStatus(val) {
+	var staty = document.getElementById("status");
+	if(document.activeElement === dummyEl) {
+	staty.style.color = "yellow";	
+	statuss.send("typing");
+	}
+	document.addEventListener('visibilitychange', () => {
+  if (document.hidden) {
+    staty.style.color = "red";
+	statuss.send("offline");
+  }
+});
+	if(document.hasFocus() == true && val == "released") {
+	setTimeout(function() {
+	staty.style.color = "lime";
+	statuss.send("online");
+	}, 4000);
+	}
+	statuss.on("message", function(username, message) {staty.innerHTML = userid + ": " + message;
+	if(message == "typing") {
+	staty.style.color = "yellow";
+	}
+	if(message == "online") {
+	staty.style.color = "lime";
+	}
+	if(message == "offline") {
+	staty.style.color = "red";
+	}
+	});
+	}
+	function clearChat() {
+	document.getElementById('log').textContent = '';
+	document.getElementById('clearChat').innerHTML = 'cleared!';
+	setTimeout(function() {
+	document.getElementById('clearChat').innerHTML = 'clear chat';
+	}, 1500);
+	}
   </script>
-  <script src="https://chr15m.github.io/bugout/bugout.min.js" type="application/javascript"></script>
   <script>
-  var b = Bugout("serv3");
-  var users = Bugout("users");
+  var b = Bugout("3");
+  var users = Bugout("users3");
   log("Hello world!");
   b.on("seen", function(username) { log(username + " [ joined ]"); });
   b.on("left", function(username) { log(username + " [ left ]"); });
   log(b.address() + " [ me ]");
   
   b.on("message", function(username, message) {
-    tit.innerHTML = "new message from" + userid;
+    tit.innerHTML = "new message from " + userid;
     setTimeout(function() {tit.innerHTML = "Chatmount messaging";}, 1500);
     document.getElementById("ping").play();
     if(pagehide == "true") {
@@ -221,12 +369,34 @@ var userid = "";
 	document.getElementById("send").click();
       }
       ev.preventDefault();
+	    var ajks = document.getElementById("log");
+      if(document.getElementById("box").textContent == "/rainbow") {
+  ajks.style.color = "red";
+  setTimeout(function() {ajks.style.color = "orange";}, 500);
+  setTimeout(function() {ajks.style.color = "yellow";}, 1000);
+  setTimeout(function() {ajks.style.color = "lime";}, 1500);
+  setTimeout(function() {ajks.style.color = "green";}, 2000);
+  setTimeout(function() {ajks.style.color = "blue";}, 2500);
+  setTimeout(function() {ajks.style.color = "purple";}, 3000);
+  setTimeout(function() {ajks.style.color = "magenta";}, 3500);
+  setTimeout(function() {ajks.style.color = "pink";}, 4000);
+  setTimeout(function() {ajks.style.color = "white";}, 4500);
+  setTimeout(function() {ajks.style.color = "black";}, 5000);
+  console.log("/rainbow command executed");
+  }
     }
   }
 document.getElementById("username").onkeydown = function(ev) {
     if (ev.keyCode == 13) {
+	    console.log(loggedIn);
+	    if(loggedIn == true) {
+		    input = userid;
+	    }
+	    else {
 	input = user.value;
 	    users.send(input);
+	    document.getElementById("username").style = "background-color: transparent; border-color: transparent; color: transparent;";
+	    }
       ev.preventDefault();
     }
   }
@@ -279,9 +449,50 @@ if ( document.hasFocus() ) {
     pagehide = "true";
 }
 }
+var notification = "";
+var mobileNotification = "";
 function notif(title, body, img) {
-    	var notification = new Notification(title, { body: body, icon: img });	
+    	notification = new Notification(title, { body: body, icon: img });
+      navigator.serviceWorker.ready.then(function(registration) {
+        registration.showNotification(title, {
+          body: body,
+          icon: img,
+          vibrate: [200, 100, 200, 100, 200, 100, 200]
+        });
+      });
+    }
+notification.onclick = function(event) {
+	event.preventDefault();
+	window.open("https://hypercreeper.github.io/chat-mount", "_blank");
 }
 	</script>
+	<script>
+function onSignIn(googleUser) {
+  var profile = googleUser.getBasicProfile();
+  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+  console.log('Name: ' + profile.getName());
+  console.log('Image URL: ' + profile.getImageUrl());
+  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+  userid = profile.getName();
+  profilep.send(profile.getImageUrl());
+	document.getElementById("so").hidden = false;
+	document.getElementById("username").value = profile.getName();
+	users.send(profile.getName());
+	document.getElementById("profilepic").src = profile.getImageUrl();
+	document.getElementById("username").style = "background-color: transparent; border-color: transparent; color: transparent;";
+	loggedIn = true;
+}
+function createPP() {
+profilep.on("message", function(username, message) {
+pp = message;
+});
+var img = document.createElement("img");
+var brrr = document.createElement("br");
+img.src = pp;
+
+document.body.appendChild(img);
+document.body.appendChild(brrr);
+}
+</script>
 	</body>
 </html>
