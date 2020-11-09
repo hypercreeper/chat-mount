@@ -6,7 +6,24 @@
   <script src="https://apis.google.com/js/platform.js" async defer></script>
 	</head>
 <body style="outline: none;">
+	<div>
 	<img src="" id="profilepic" style="left: 1326px; border-radius: 50%; height: 32px; width: 32px; position: fixed;">
+	<div style="display: block; height: 150px; width: 500px; background-color: #00000019;">
+	<div class="g-signin2" data-onsuccess="onSignIn"></div>
+	  <a href="#" onclick="signOut();" id="so" hidden style="color: blue; font-size: 18px; text-align: left;">Sign out</a>
+<script>
+  function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+      document.getElementById("so").hidden = false;
+      document.getElementById("username").style = "";
+      document.getElementById("profilepic").src = "";
+    });
+  }
+</script>	
+	</div>
+	</div>
 	<audio id="ping" src="/chat-mount/ping.mp3"></audio>
 <div id="myNav" class="overlay">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -32,19 +49,6 @@ chromeOS - ChromeOS maybe     chromeOS X android/IOS. That is why you need the h
 <div id="settingss" class="overlay">
   <a href="javascript:void(0)" class="closebtn" onclick="closesettings()">&times;</a>
   <div class="overlay-content">
-  <div class="g-signin2" data-onsuccess="onSignIn"></div>
-	  <a href="#" onclick="signOut();" id="so" hidden style="color: blue; font-size: 18px; text-align: left;">Sign out</a>
-<script>
-  function signOut() {
-    var auth2 = gapi.auth2.getAuthInstance();
-    auth2.signOut().then(function () {
-      console.log('User signed out.');
-      document.getElementById("so").hidden = false;
-      document.getElementById("username").style = "";
-      document.getElementById("profilepic").src = "";
-    });
-  }
-</script>
   <input style="" type="search" placeholder="enter username here" id="username" onclick="askNotificationPermission()">
 	  <input type="file" id="file" style="position: fixed;" hidden><button onclick="document.getElementById('file').click();">choose file</button>
 <script>
