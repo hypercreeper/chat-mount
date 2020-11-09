@@ -46,10 +46,9 @@ chromeOS - ChromeOS maybe     chromeOS X android/IOS. That is why you need the h
   }
 </script>
   <input style="" type="search" placeholder="enter username here" id="username" onclick="askNotificationPermission()">
-	  <input type="file" id="file" onchange="previewFile()">
-	  <script>
-// Bind to the change event of our file input
-$("input[name='myFileSelect']").on("change", function(){
+	  <input type="file" id="file" style="position: fixed;" hidden><button onclick="document.getElementById('file').click();">choose file</button>
+<script>
+document.getElementById("file").addEventListener("change", function(){
 
     // Get a reference to the fileList
     var files = !!this.files ? this.files : [];
@@ -69,7 +68,7 @@ $("input[name='myFileSelect']").on("change", function(){
         // When loaded, set image data as background of page
         reader.onloadend = function(){
 
-            $("html").css("background-image", "url(" + this.result + ")");
+            document.getElementsByTagName("html")[0].style = "background-image: url(" + this.result + ")";
 
         }
 
