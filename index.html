@@ -48,22 +48,34 @@ chromeOS - ChromeOS maybe     chromeOS X android/IOS. That is why you need the h
   <input style="" type="search" placeholder="enter username here" id="username" onclick="askNotificationPermission()">
 	  <input type="file" id="file" onchange="previewFile()">
 	  <script>
-function previewFile() {
-  var preview = document.body.style
-  var file    = document.querySelector('input[type=file]').files[0];
-  var reader  = new FileReader();
-  var pic = "";
-  reader.onloadend = function () {
-    pic = 'url("' + reader.result + '");';
-    preview = pic;
-  }
+// Bind to the change event of our file input
+$("input[name='myFileSelect']").on("change", function(){
 
-  if (file) {
-    reader.readAsDataURL(file);
-  } else {
-    preview.src = "";
-  }
-}
+    // Get a reference to the fileList
+    var files = !!this.files ? this.files : [];
+
+    // If no files were selected, or no FileReader support, return
+    if ( !files.length || !window.FileReader ) return;
+
+    // Only proceed if the selected file is an image
+    if ( /^image/.test( files[0].type ) ) {
+
+        // Create a new instance of the FileReader
+        var reader = new FileReader();
+
+        // Read the local file as a DataURL
+        reader.readAsDataURL( files[0] );
+
+        // When loaded, set image data as background of page
+        reader.onloadend = function(){
+
+            $("html").css("background-image", "url(" + this.result + ")");
+
+        }
+
+    }
+
+});
 </script>
 	  <script>
 var i = 0;
