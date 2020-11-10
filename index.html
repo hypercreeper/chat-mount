@@ -4,6 +4,9 @@
 	<link rel="icon" href="https://hypercreeper.github.io/chat-mount/icon.png" type="image/png">
  <meta name="google-signin-client_id" content="404916197013-8defo61htvnh2th4mmk6sjmvr1j0blb4.apps.googleusercontent.com">
   <script src="https://apis.google.com/js/platform.js" async defer></script>
+		<script>
+			var loggedIn = 0;
+		</script>
 	</head>
 <body style="outline: none;">
 	<div>
@@ -30,6 +33,7 @@ var lock = 0;
       document.getElementById("so").hidden = false;
       document.getElementById("username").style = "";
       document.getElementById("profilepic").src = "";
+      loggedIn = 0;    
     });
   }
 </script>	
@@ -94,7 +98,7 @@ document.getElementById("file").addEventListener("change", function(){
 	  <script>
 var i = 0;
 </script>
-<button onclick="i++; var frame = document.createElement('iframe'); frame.src = 'https://hypercreeper.github.io/chat-mount/' + i + '.html'; document.body.appendChild(frame);">create group</button>
+<button onclick="i++; var frame = window.open('https://hypercreeper.github.io/chat-mount/' + i + '.html', '', 'width=342,height=768');">create group</button>
 <style>
 iframe {
 height: 100%;
@@ -331,7 +335,6 @@ var userid = "";
 var statuss = Bugout("status");
 var profilep = Bugout("pp");
 var pp = "";
-var loggedIn = false;
 // dummy element
 var dummyEl = document.getElementById('box');
 
@@ -424,7 +427,7 @@ var dummyEl = document.getElementById('box');
 document.getElementById("username").onkeydown = function(ev) {
     if (ev.keyCode == 13) {
 	    console.log(loggedIn);
-	    if(loggedIn == true) {
+	    if(loggedIn == 1) {
 		    input = userid;
 	    }
 	    else {
@@ -515,7 +518,7 @@ function onSignIn(googleUser) {
 	users.send(profile.getName());
 	document.getElementById("profilepic").src = profile.getImageUrl();
 	document.getElementById("username").style = "background-color: transparent; border-color: transparent; color: transparent;";
-	loggedIn = true;
+	loggedIn = 1;
 }
 function createPP() {
 profilep.on("message", function(username, message) {
