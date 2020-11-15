@@ -544,10 +544,10 @@ function onSignIn(googleUser) {
 	document.getElementById("men").innerHTML = profile.getName();
 	
 }
-function createPP() {
 profilep.on("message", function(username, message) {
 pp = message;
 });
+function createPP() {
 var img = document.createElement("img");
 var brrr = document.createElement("br");
 img.src = pp;
