@@ -1,12 +1,47 @@
-<html>
+<html style="background-image: url('https://www.bluebay.com/globalassets/media/green-mountains.jpg');">
 	<head>
 	<title id="title">Chatmount messaging</title>
 	<link rel="icon" href="https://hypercreeper.github.io/chat-mount/icon.png" type="image/png">
  <meta name="google-signin-client_id" content="404916197013-8defo61htvnh2th4mmk6sjmvr1j0blb4.apps.googleusercontent.com">
   <script src="https://apis.google.com/js/platform.js" async defer></script>
+		<script>
+			var loggedIn = 0;
+			
+		</script>
+		<script src="https://chr15m.github.io/bugout/bugout.min.js" type="application/javascript"></script>
 	</head>
 <body style="outline: none;">
-	<img src="" id="profilepic" style="left: 1326px; border-radius: 50%; height: 32px; width: 32px; position: fixed;">
+	<div>
+	<img src="" id="profilepic" style="left: 1326px; border-radius: 50%; height: 32px; width: 32px; position: fixed; cursor: pointer;" onclick="openthemenu()"><br><br>
+	<div style="position: fixed; left: 1058px; height: auto; width: 300px; background-color: #00000099; text-align: center; font-size: 24px; color: white; transition-duration: 0.4s;" id="menu" hidden><br><p id="men"></p>
+	<div class="g-signin2" data-onsuccess="onSignIn" style="left: 25px;"></div>
+	  <a href="#" onclick="signOut();" id="so" hidden style="color: white; text-decoration: underline; font-size: 18px; text-align: left;">Sign out</a>
+<script>
+var lock = 0;
+  function openthemenu() {
+  i++;
+  if(i == 1) {
+  document.getElementById("menu").hidden = false;
+  }
+  else {
+  document.getElementById("menu").hidden = true;
+  i = 0;
+  }
+  }
+  function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+      document.getElementById("so").hidden = false;
+      document.getElementById("username").style = "";
+      document.getElementById("profilepic").src = "";
+      loggedIn = 0;    
+      document.getElementById("men").innerHTML = "";
+    });
+  }
+</script>	
+	</div>
+	</div>
 	<audio id="ping" src="/chat-mount/ping.mp3"></audio>
 <div id="myNav" class="overlay">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -32,39 +67,47 @@ chromeOS - ChromeOS maybe     chromeOS X android/IOS. That is why you need the h
 <div id="settingss" class="overlay">
   <a href="javascript:void(0)" class="closebtn" onclick="closesettings()">&times;</a>
   <div class="overlay-content">
-  <div class="g-signin2" data-onsuccess="onSignIn"></div>
-	  <a href="#" onclick="signOut();" id="so" hidden style="color: blue; font-size: 18px; text-align: left;">Sign out</a>
-<script>
-  function signOut() {
-    var auth2 = gapi.auth2.getAuthInstance();
-    auth2.signOut().then(function () {
-      console.log('User signed out.');
-      document.getElementById("so").hidden = false;
-      document.getElementById("username").style = "";
-      document.getElementById("profilepic").src = "";
-    });
-  }
-</script>
   <input style="" type="search" placeholder="enter username here" id="username" onclick="askNotificationPermission()">
-	  <input type="file" id="file" onchange="previewFile()">
-	  <script>
-function previewFile() {
-  var preview = document.body.style
-  var file    = document.querySelector('input[type=file]').files[0];
-  var reader  = new FileReader();
-  var pic = "";
-  reader.onloadend = function () {
-    pic = 'url("' + reader.result + '");';
-    preview = pic;
-  }
+	  <input type="file" id="file" style="position: fixed;" hidden><button onclick="document.getElementById('file').click();">choose file</button>
+<script>
+document.getElementById("file").addEventListener("change", function(){
 
-  if (file) {
-    reader.readAsDataURL(file);
-  } else {
-    preview.src = "";
-  }
-}
+    // Get a reference to the fileList
+    var files = !!this.files ? this.files : [];
+
+    // If no files were selected, or no FileReader support, return
+    if ( !files.length || !window.FileReader ) return;
+
+    // Only proceed if the selected file is an image
+    if ( /^image/.test( files[0].type ) ) {
+
+        // Create a new instance of the FileReader
+        var reader = new FileReader();
+
+        // Read the local file as a DataURL
+        reader.readAsDataURL( files[0] );
+
+        // When loaded, set image data as background of page
+        reader.onloadend = function(){
+
+            document.getElementsByTagName("html")[0].style = "background-image: url(" + this.result + ")";
+
+        }
+
+    }
+
+});
 </script>
+	  <script>
+var i = 0;
+</script>
+<button onclick="i++; var frame = window.open('https://hypercreeper.github.io/chat-mount/' + i + '.html', '', 'width=342,height=768');">create group</button>
+<style>
+iframe {
+height: 100%;
+width: 25%;
+}
+</style>
   </div>
   </div>
 <br>
@@ -144,11 +187,31 @@ function closeNav() {
   document.getElementById("myNav").style.width = "0%";
 }
 </script>
-<p contenteditable="true" spellcheck="false" id="box" class="box" placeholder="send a message!" onmousemove="document.getElementById('send').click();" onmouseover="document.getElementById('send').click();" onkeyup="document.getElementById('send').click(); setStatus('released');" >
+<p contenteditable="true" spellcheck="false" id="box" class="box" placeholder="send a message!" onmousemove="document.getElementById('send').click();" onmouseover="document.getElementById('send').click();" onkeyup="document.getElementById('send').click(); setStatus('released');" ondrop="drop(event)" ondragover="beforeDrop()" ondragover="allowDrop(event)">
 </p><input type="button" onclick="users.send(input);" value="send" id="send" style="background-color: #00000000; border-color: #00000000; color: #00000000;"><br><br>
 	<br><p id="status"></p><br><br>
-	<pre id="log" style="heigt: auto; width: 50%; background-color: #00000000; color: white; font-weight: bolder;">
+	<div style="float: left; height: 100px;; width: 32px;" id="ppplacer"></div><pre id="log" style="height: auto; width: 50%; background-color: #00000000; color: white; font-weight: bolder;">
 	</pre>
+<script>
+var imggs = Bugout("imggs");
+function drop(evt) {
+    evt.stopPropagation();
+    evt.preventDefault(); 
+    var imageUrl = evt.dataTransfer.getData('URL');
+    var imgsend = document.createElement("img");
+    imgsend.src = imageUrl;
+    document.getElementById("log").appendChild(imgsend);
+    imggs.send(imageUrl);
+    console.log("sent");
+}
+function beforeDrop() {
+
+}
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+</script>
+
 <style>
 .overlay {
   height: 100%;
@@ -204,7 +267,6 @@ function closeNav() {
 body {
 outline: none;
 font-family: sans-serif;
-background-image: url("https://www.bluebay.com/globalassets/media/green-mountains.jpg");
 background-size: 1366px;
 }
 input[type=search]:hover {
@@ -287,16 +349,14 @@ width: 50%;
 height: auto;
 }
 </style>
-  <script src="https://chr15m.github.io/bugout/bugout.min.js" type="application/javascript"></script>
 <script>
 var tit = document.getElementById("title");
 var user = document.getElementById("username");
 var input = "";
 var userid = "";
-var statuss = Bugout("status1");
-var profilep = Bugout("pp1");
+var statuss = Bugout("status");
+var profilep = Bugout("pp");
 var pp = "";
-var loggedIn = false;
 // dummy element
 var dummyEl = document.getElementById('box');
 
@@ -343,8 +403,8 @@ var dummyEl = document.getElementById('box');
 	}
   </script>
   <script>
-  var b = Bugout("1");
-  var users = Bugout("users1");
+  var b = Bugout("all");
+  var users = Bugout("users");
   log("Hello world!");
   b.on("seen", function(username) { log(username + " [ joined ]"); });
   b.on("left", function(username) { log(username + " [ left ]"); });
@@ -389,7 +449,7 @@ var dummyEl = document.getElementById('box');
 document.getElementById("username").onkeydown = function(ev) {
     if (ev.keyCode == 13) {
 	    console.log(loggedIn);
-	    if(loggedIn == true) {
+	    if(loggedIn == 1) {
 		    input = userid;
 	    }
 	    else {
@@ -480,7 +540,9 @@ function onSignIn(googleUser) {
 	users.send(profile.getName());
 	document.getElementById("profilepic").src = profile.getImageUrl();
 	document.getElementById("username").style = "background-color: transparent; border-color: transparent; color: transparent;";
-	loggedIn = true;
+	loggedIn = 1;
+	document.getElementById("men").innerHTML = profile.getName();
+	
 }
 function createPP() {
 profilep.on("message", function(username, message) {
@@ -493,6 +555,16 @@ img.src = pp;
 document.body.appendChild(img);
 document.body.appendChild(brrr);
 }
+b.on("message", createPP);
+</script>
+<script>
+imggs.on("message", function(username, message) {
+    var imgsend = document.createElement("img");
+    var brsep = document.createElement("br");
+    imgsend.src = message;
+    document.getElementById("log").appendChild(imgsend);
+    document.getElementById("log").appendChild(brsep);
+    });
 </script>
 	</body>
 </html>
