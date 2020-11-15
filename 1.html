@@ -542,7 +542,7 @@ function onSignIn(googleUser) {
 	document.getElementById("username").style = "background-color: transparent; border-color: transparent; color: transparent;";
 	loggedIn = 1;
 	document.getElementById("men").innerHTML = profile.getName();
-	
+	profilep.send(profile.getImageUrl());
 }
 profilep.on("message", function(username, message) {
 pp = message;
@@ -552,8 +552,8 @@ var img = document.createElement("img");
 var brrr = document.createElement("br");
 img.src = pp;
 
-document.body.appendChild(img);
-document.body.appendChild(brrr);
+document.getElementById("ppplacer").appendChild(img);
+document.getElementById("ppplacer").appendChild(brrr);
 }
 b.on("message", createPP);
 </script>
