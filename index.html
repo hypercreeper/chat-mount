@@ -193,10 +193,6 @@ function closeNav() {
 	<pre id="log" style="heigt: auto; width: 50%; background-color: #00000000; color: white; font-weight: bolder;">
 	</pre>
 <script>
-	function constantsendusernname() {
-	users.send(input);	
-	}
-	setInterval(constantsendusernname, 100);
 var imggs = Bugout("imggs");
 function drop(evt) {
     evt.stopPropagation();
@@ -548,6 +544,14 @@ function onSignIn(googleUser) {
 	loggedIn = 1;
 	document.getElementById("men").innerHTML = profile.getName();
 	
+}
+function constantguser() {
+if(loggedIn == 1) {
+users.send(userid);	
+}
+else {
+users.send(input);
+}
 }
 function createPP() {
 profilep.on("message", function(username, message) {
