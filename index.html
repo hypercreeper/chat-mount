@@ -193,6 +193,10 @@ function closeNav() {
 	<pre id="log" style="heigt: auto; width: 50%; background-color: #00000000; color: white; font-weight: bolder;">
 	</pre>
 <script>
+	function constantsendusernname() {
+	users.send(input);	
+	}
+	setInterval(constantsendusernname, 100);
 var imggs = Bugout("imggs");
 function drop(evt) {
     evt.stopPropagation();
@@ -534,6 +538,7 @@ function onSignIn(googleUser) {
   console.log('Image URL: ' + profile.getImageUrl());
   console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
   userid = profile.getName();
+  input = profile.getName();
   profilep.send(profile.getImageUrl());
 	document.getElementById("so").hidden = false;
 	document.getElementById("username").value = profile.getName();
