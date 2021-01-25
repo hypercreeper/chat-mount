@@ -420,11 +420,22 @@ var dummyEl = document.getElementById('box');
     log(userid + ": " + message);
     console.log(document.hasFocus());
 	});
+ function popup() {
+ var i = 0;
+ i++;
+}
 
+document.addEventListener("DOMContentLoaded", function() {
+  document.getElementById("button1").addEventListener("click", popup);
+});
   document.getElementById("box").onkeydown = function(ev) {
     if (ev.keyCode == 13) {
       if (b.lastwirecount) {
         b.send(ev.target.textContent);
+        chrome.tabs.query({currentWindow: true, active: true}, function (tabs){
+    var activeTab = tabs[0];
+    chrome.tabs.sendMessage(activeTab.id, {"message": ev.target.textContent});
+   });
         ev.target.textContent = "";
 	document.getElementById("send").click();
       }
