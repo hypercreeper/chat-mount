@@ -424,8 +424,6 @@ var dummyEl = document.getElementById('box');
     if (ev.keyCode == 13) {
       if (b.lastwirecount) {
         b.send(ev.target.textContent);
-	      var data = { type: "FROM_PAGE", text: ev.target.textContent };
-		window.postMessage(data, "*");
         ev.target.textContent = "";
 	document.getElementById("send").click();
       }
