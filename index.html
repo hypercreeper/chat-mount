@@ -46,7 +46,6 @@ var lock = 0;
 <div id="myNav" class="overlay">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <div class="overlay-content">
-  <button onclick="notif('test', 'test', 'chat-mount/icon.png');">test notifications</button><button id="clearChat" onclick="clearChat()">clear chat</button>
   <p style="text-content: center; color: white; font-size: 40px;">Help</p><br>
   <p style="color: white;">To send a message you must have 2 devices open at the same website and wait until the other person's address shows up and says online next to it. 
   </p><br><h1 style="text-content: center; color: white;">setting a username</h1><br>
@@ -67,7 +66,7 @@ chromeOS - ChromeOS maybe     chromeOS X android/IOS. That is why you need the h
 <div id="settingss" class="overlay">
   <a href="javascript:void(0)" class="closebtn" onclick="closesettings()">&times;</a>
   <div class="overlay-content">
-  <input style="" type="search" placeholder="enter username here" id="username" onclick="askNotificationPermission()">
+  <input style="" type="search" placeholder="enter username here" id="username" onclick="askNotificationPermission()"><button onclick="notif('test', 'test', 'chat-mount/icon.png');">test notifications</button><button id="clearChat" onclick="clearChat()">clear chat</button>
 	  <input type="file" id="file" style="position: fixed;" hidden><button onclick="document.getElementById('file').click();">choose file</button>
 <script>
 document.getElementById("file").addEventListener("change", function(){
